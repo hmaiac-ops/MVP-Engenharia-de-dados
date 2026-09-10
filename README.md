@@ -76,7 +76,7 @@ erDiagram
   }
 ```
 
-Catálogo de dados completo (todas as colunas, tipos e domínios) está no notebook.
+Catálogo de dados completo (todas as colunas, tipos e domínios) está em `04_Gold.ipynb`.
 
 ## Qualidade de dados
 
@@ -91,18 +91,29 @@ Antes de modelar, checei nulos, domínio de valores, faixa numérica e duplicida
 - Por Estado não havia variação real (base 100% Califórnia) — troquei para análise por Cidade, filtrando só cidades com pelo menos 30 clientes pra evitar conclusão de amostra pequena.
 - Densidade populacional da região também se relaciona com o perfil de consumo e churn.
 
+## Estrutura do projeto
+
+O pipeline foi dividido em um notebook por etapa, seguindo a recomendação da disciplina. Cada notebook grava suas tabelas Delta no Unity Catalog, e o próximo lê essas tabelas — não é preciso reaproveitar nada em memória entre eles.
+
+| Notebook | Conteúdo |
+|---|---|
+| `01_Objetivo.ipynb` | Problema a ser resolvido e as 6 perguntas de negócio |
+| `02_Coleta_e_Bronze.ipynb` | Fonte, licença dos dados e ingestão bruta (camada Bronze) |
+| `03_Silver.ipynb` | Limpeza e padronização dos dados (camada Silver) |
+| `04_Gold.ipynb` | Catálogo de dados e modelagem em Esquema Estrela (camada Gold) |
+| `05_Analise.ipynb` | Qualidade de dados, consultas SQL, gráficos e discussão dos resultados |
+| `06_Autoavaliacao.ipynb` | Desafios técnicos, objetivos atingidos e próximos passos |
+
 ## Como rodar
 
 1. Crie uma conta no [Databricks Free Edition](https://www.databricks.com/try-databricks).
-2. Importe o notebook `MVP_Sprint_Engenharia_de_Dados_Hamilton.ipynb` para o seu workspace.
-3. Rode as células em ordem — a ingestão já busca os CSVs direto das URLs raw deste repositório.
+2. Importe os 6 notebooks deste repositório para o seu workspace.
+3. Execute na ordem numérica, do `01_Objetivo` ao `06_Autoavaliacao` — cada notebook depende das tabelas gravadas pelo anterior, então pular a ordem quebra a execução.
 
 ## Autoavaliação
 
-Discussão sobre desafios técnicos, objetivos atingidos e próximos passos está na última seção do notebook.
+Discussão sobre desafios técnicos, objetivos atingidos e próximos passos está em `06_Autoavaliacao.ipynb`.
 
 ## Autor
 
 Hamilton — MVP de pós-graduação em Ciência de Dados e Analytics, PUC-Rio.
-notebook principal.
-
