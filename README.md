@@ -1,6 +1,10 @@
 # MVP-Engenharia-de-dados
 Repositorio para hospedagem do meu MVP para o sprint de Engenharia de dados - PUCRIO
 
+## Modelagem de Dados
+
+A camada Gold do pipeline foi estruturada em um **Esquema Estrela (Star Schema)**, com a tabela `fato_faturamento` no centro, conectada a três dimensões por chave estrangeira (`dim_cliente`, `dim_servicos`, `dim_contrato`) e a uma quarta dimensão (`dim_localizacao`) vinculada diretamente a `dim_cliente` pelo `customerID` compartilhado.
+
 ```mermaid
 erDiagram
   DIM_CLIENTE ||--o{ FATO_FATURAMENTO : possui
@@ -47,3 +51,6 @@ erDiagram
     string Churn
   }
 ```
+
+O detalhamento completo de cada coluna, com tipos e domínios de valores, está documentado no Catálogo de Dados dentro do notebook principal.
+
