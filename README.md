@@ -38,7 +38,7 @@ Os três arquivos utilizados estão incluídos neste repositório, permitindo co
 
 A base principal é conhecida como *IBM Telco Customer Churn*. As três cópias utilizadas pelo pipeline são lidas diretamente deste repositório por meio de URLs `raw` do GitHub. O notebook [`02_Coleta_e_Bronze`](./MVP%20Notebooks/02_Coleta_e_Bronze.ipynb) documenta a estratégia de coleta.
 
-**Proveniência e licença:** os materiais do projeto identificam a IBM e a circulação pública das bases em repositórios como Kaggle e GitHub, mas não registram uma URL original e uma licença específica, verificadas individualmente, para cada arquivo. A disponibilização pública não deve ser interpretada como autorização irrestrita para uso comercial. Os arquivos são utilizados aqui no contexto acadêmico; antes de qualquer reutilização externa, devem ser verificadas as condições da fonte original correspondente.
+**Fonte e finalidade de uso:** as bases são atribuídas à **IBM** e utilizadas neste MVP como conjuntos de dados disponibilizados para fins educacionais. Segundo a identificação da fonte adotada no projeto, seu uso educacional é livre. As três cópias empregadas no pipeline estão incluídas neste repositório. Essa informação não equivale à confirmação de uma licença específica para redistribuição ou uso comercial; para essas finalidades, devem ser consultados os termos oficiais de cada conjunto de dados.
 
 ## 3. Arquitetura e processamento
 
@@ -147,6 +147,7 @@ Os resultados detalhados, as tabelas e os gráficos estão no [`05_Analise.ipynb
 | [`04_Gold.ipynb`](./MVP%20Notebooks/04_Gold.ipynb) | Modelagem dimensional, catálogo de dados e persistência Gold |
 | [`05_Analise.ipynb`](./MVP%20Notebooks/05_Analise.ipynb) | Qualidade, consultas SQL, gráficos e discussão dos resultados |
 | [`06_Autoavaliacao.ipynb`](./MVP%20Notebooks/06_Autoavaliacao.ipynb) | Desafios, aprendizado, objetivos atingidos e próximos passos |
+| [`.databricks/commit_outputs`](./.databricks/commit_outputs) | Configuração de inclusão dos resultados dos notebooks nos commits |
 
 ## 7. Como reproduzir
 
@@ -171,4 +172,5 @@ As principais limitações analíticas são a natureza observacional da base, a 
 - [Documentação oficial do Databricks](https://docs.databricks.com/) — documentação técnica da plataforma.
 - [Apache Spark — documentação oficial](https://spark.apache.org/docs/latest/) — referência para PySpark e Spark SQL.
 - [Delta Lake — documentação oficial](https://docs.delta.io/) — referência para o formato de armazenamento.
-- **IBM Telco Customer Churn e bases complementares:** os arquivos efetivamente utilizados estão disponíveis na seção [Fontes de dados](#2-fontes-de-dados). A origem primária e os termos de licença de cada arquivo devem ser confirmados antes de uso fora do contexto deste MVP.
+- **IBM — Telco Customer Churn e bases complementares:** conjuntos de dados atribuídos à IBM e empregados para fins educacionais. Os três arquivos utilizados estão disponíveis na seção [Fontes de dados](#2-fontes-de-dados). A licença específica de redistribuição e uso comercial não foi verificada neste README.
+
