@@ -31,7 +31,7 @@ Dados criados e disponibilizados pela IBM para fins educacionais — anonimizado
 
 Pipeline em Arquitetura Medalhão, no **Databricks Free Edition**, usando PySpark e Delta Lake:
 
-- **Bronze:** ingestão dos 3 CSVs direto das URLs raw do GitHub. Como o Delta Lake não aceita espaço em nome de coluna, já normalizei `Zip Code` → `Zip_Code` e `Customer ID` → `Customer_ID` nessa etapa.
+- **Bronze:** ingestão dos 3 CSVs direto das URLs raw do GitHub. Como o Delta Lake não aceita espaço em nome de coluna, já normalizei `Zip Code` → `Zip_Code` e `Customer ID` → `customerID` nessa etapa.
 - **Silver:** limpeza e tipagem — tratei o `TotalCharges` vazio (clientes novos) e o `Population` (vinha como texto com vírgula de milhar, ex. `"54,492"`).
 - **Gold:** modelagem em Esquema Estrela, pronta para consulta analítica.
 
@@ -80,7 +80,7 @@ Catálogo de dados completo (todas as colunas, tipos e domínios) está em `04_G
 
 ## Qualidade de dados
 
-Antes de modelar, checei nulos, domínio de valores, faixa numérica e duplicidade de chave em cada atributo, ainda na camada Bronze. Achados principais: `TotalCharges` tinha 11 registros vazios (clientes com `tenure = 0`); `Population` não dava pra comparar numericamente por causa da formatação de texto; `customerID` e `Zip_Code` confirmados como chaves únicas, sem duplicidade.
+Antes de modelar, verifiquei nulos, domínio de valores, faixa numérica e duplicidade de chave em cada atributo, ainda na camada Bronze. Achados principais: `TotalCharges` tinha 11 registros vazios (clientes com `tenure = 0`); `Population` não dava pra comparar numericamente por causa da formatação de texto; `customerID` e `Zip_Code` confirmados como chaves únicas, sem duplicidade.
 
 ## Principais resultados
 
@@ -88,7 +88,7 @@ Antes de modelar, checei nulos, domínio de valores, faixa numérica e duplicida
 - Fibra ótica tem faturamento maior, mas exige mais atenção no pós-venda.
 - Suporte técnico está associado a menor churn.
 - Pagamento automático (cartão) está associado a mais tempo de casa e mais receita.
-- Por Estado não havia variação real (base 100% Califórnia) — troquei para análise por Cidade, filtrando só cidades com pelo menos 30 clientes pra evitar conclusão de amostra pequena.
+- Por Estado não havia variação real (base 100% Califórnia). Troquei para análise por Cidade, filtrando só cidades com pelo menos 30 clientes pra evitar conclusão de amostra pequena.
 - Densidade populacional da região também se relaciona com o perfil de consumo e churn.
 
 ## Estrutura do projeto
@@ -108,7 +108,7 @@ O pipeline foi dividido em um notebook por etapa, seguindo a recomendação da d
 
 1. Crie uma conta no [Databricks Free Edition](https://www.databricks.com/try-databricks).
 2. Importe os 6 notebooks deste repositório para o seu workspace.
-3. Execute na ordem numérica, do `01_Objetivo` ao `06_Autoavaliacao` — cada notebook depende das tabelas gravadas pelo anterior, então pular a ordem quebra a execução.
+3. Execute na ordem numérica, do `01_Objetivo` ao `06_Autoavaliacao`. Cada notebook depende das tabelas gravadas pelo anterior, então pular a ordem quebra a execução.
 
 ## Autoavaliação
 
