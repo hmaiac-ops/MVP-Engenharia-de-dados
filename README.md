@@ -36,7 +36,7 @@ Os três arquivos utilizados estão incluídos neste repositório, permitindo co
 | [`Telco_customer_churn_location.csv`](./Telco_customer_churn_location.csv) | Localização dos clientes, incluindo cidade, CEP e coordenadas | Enriquecimento geográfico |
 | [`Telco_customer_churn_population.csv`](./Telco_customer_churn_population.csv) | População associada aos CEPs | Enriquecimento populacional |
 
-A base principal é conhecida como *IBM Telco Customer Churn*. As três cópias utilizadas pelo pipeline são lidas diretamente deste repositório por meio de URLs `raw` do GitHub. O notebook [`02_Coleta_e_Bronze`](./MVP%20Notebooks/02_Coleta_e_Bronze.ipynb) documenta a estratégia de coleta.
+A base principal é conhecida como *IBM Telco Customer Churn*. As três cópias utilizadas pelo pipeline são lidas diretamente deste repositório por meio de URLs `raw` do GitHub. O notebook [`02_Coleta_e_Bronze`](./MVP_Notebooks/02_Coleta_e_Bronze.ipynb) documenta a estratégia de coleta.
 
 **Fonte e finalidade de uso:** as bases são atribuídas à **IBM** e utilizadas neste MVP como conjuntos de dados disponibilizados para fins educacionais. Segundo a identificação da fonte adotada no projeto, seu uso educacional é livre. As três cópias empregadas no pipeline estão incluídas neste repositório. Essa informação não equivale à confirmação de uma licença específica para redistribuição ou uso comercial; para essas finalidades, devem ser consultados os termos oficiais de cada conjunto de dados.
 
@@ -112,7 +112,7 @@ erDiagram
     }
 ```
 
-A dimensão de localização é relacionada à tabela fato por `customerID` nas consultas analíticas, embora essa chave não seja materializada como uma chave estrangeira declarada no Delta Lake. O diagrama apresenta os atributos centrais, não todas as colunas. O **catálogo de dados**, com atributos, tipos e domínios documentados, está no [`04_Gold.ipynb`](./MVP%20Notebooks/04_Gold.ipynb).
+A dimensão de localização é relacionada à tabela fato por `customerID` nas consultas analíticas, embora essa chave não seja materializada como uma chave estrangeira declarada no Delta Lake. O diagrama apresenta os atributos centrais, não todas as colunas. O **catálogo de dados**, com atributos, tipos e domínios documentados, está no [`04_Gold.ipynb`](./MVP_Notebooks/04_Gold.ipynb).
 
 ## 4. Qualidade dos dados
 
@@ -120,7 +120,7 @@ O notebook de análise examina as três fontes ainda na Bronze, incluindo valore
 
 Entre os achados documentados estão os **11 valores vazios em `TotalCharges`**, todos associados a clientes com `tenure = 0`, e a necessidade de converter a coluna `Population`, originalmente representada como texto com separadores de milhar. A padronização das chaves permite integrar as fontes de churn, localização e população.
 
-As verificações, consultas e saídas salvas estão em [`05_Analise.ipynb`](./MVP%20Notebooks/05_Analise.ipynb).
+As verificações, consultas e saídas salvas estão em [`05_Analise.ipynb`](./MVP_Notebooks/05_Analise.ipynb).
 
 ## 5. Análises e resultados
 
@@ -135,26 +135,26 @@ As consultas SQL utilizam as tabelas Gold e respondem às perguntas iniciais na 
 | Localização | Comparação de churn por cidade, considerando apenas cidades com pelo menos 30 clientes. | O recorte não mede clientes de alto valor por cidade. |
 | População | Comparação de faturamento mensal médio e churn entre faixas de população do CEP. | População absoluta não equivale à densidade populacional. |
 
-Os resultados detalhados, as tabelas e os gráficos estão no [`05_Analise.ipynb`](./MVP%20Notebooks/05_Analise.ipynb). A base geográfica utilizada contempla clientes da Califórnia; por isso, a análise territorial foi concentrada em cidades, em vez de comparar estados.
+Os resultados detalhados, as tabelas e os gráficos estão no [`05_Analise.ipynb`](./MVP_Notebooks/05_Analise.ipynb). A base geográfica utilizada contempla clientes da Califórnia; por isso, a análise territorial foi concentrada em cidades, em vez de comparar estados.
 
 ## 6. Estrutura do repositório
 
 | Arquivo | Finalidade |
 |---|---|
-| [`01_Objetivo.ipynb`](./MVP%20Notebooks/01_Objetivo.ipynb) | Contexto, problema e perguntas de negócio originais |
-| [`02_Coleta_e_Bronze.ipynb`](./MVP%20Notebooks/02_Coleta_e_Bronze.ipynb) | Fontes, ingestão e persistência Bronze |
-| [`03_Silver.ipynb`](./MVP%20Notebooks/03_Silver.ipynb) | Limpeza, conversão de tipos e persistência Silver |
-| [`04_Gold.ipynb`](./MVP%20Notebooks/04_Gold.ipynb) | Modelagem dimensional, catálogo de dados e persistência Gold |
-| [`05_Analise.ipynb`](./MVP%20Notebooks/05_Analise.ipynb) | Qualidade, consultas SQL, gráficos e discussão dos resultados |
-| [`06_Autoavaliacao.ipynb`](./MVP%20Notebooks/06_Autoavaliacao.ipynb) | Desafios, aprendizado, objetivos atingidos e próximos passos |
+| [`01_Objetivo.ipynb`](./MVP_Notebooks/01_Objetivo.ipynb) | Contexto, problema e perguntas de negócio originais |
+| [`02_Coleta_e_Bronze.ipynb`](./MVP_Notebooks/02_Coleta_e_Bronze.ipynb) | Fontes, ingestão e persistência Bronze |
+| [`03_Silver.ipynb`](./MVP_Notebooks/03_Silver.ipynb) | Limpeza, conversão de tipos e persistência Silver |
+| [`04_Gold.ipynb`](./MVP_Notebooks/04_Gold.ipynb) | Modelagem dimensional, catálogo de dados e persistência Gold |
+| [`05_Analise.ipynb`](./MVP_Notebooks/05_Analise.ipynb) | Qualidade, consultas SQL, gráficos e discussão dos resultados |
+| [`06_Autoavaliacao.ipynb`](./MVP_Notebooks/06_Autoavaliacao.ipynb) | Desafios, aprendizado, objetivos atingidos e próximos passos |
 | [`.databricks/commit_outputs`](./.databricks/commit_outputs) | Configuração de inclusão dos resultados dos notebooks nos commits |
 
 ## 7. Como reproduzir
 
 1. Acesse o [Databricks Free Edition](https://www.databricks.com/try-databricks) e importe ou clone este repositório.
-2. Leia o [`01_Objetivo`](./MVP%20Notebooks/01_Objetivo.ipynb), que é documental.
-3. Execute, nesta ordem, os notebooks [`02_Coleta_e_Bronze`](./MVP%20Notebooks/02_Coleta_e_Bronze.ipynb), [`03_Silver`](./MVP%20Notebooks/03_Silver.ipynb), [`04_Gold`](./MVP%20Notebooks/04_Gold.ipynb) e [`05_Analise`](./MVP%20Notebooks/05_Analise.ipynb).
-4. Consulte o [`06_Autoavaliacao`](./MVP%20Notebooks/06_Autoavaliacao.ipynb), também documental.
+2. Leia o [`01_Objetivo`](./MVP_Notebooks/01_Objetivo.ipynb), que é documental.
+3. Execute, nesta ordem, os notebooks [`02_Coleta_e_Bronze`](./MVP_Notebooks/02_Coleta_e_Bronze.ipynb), [`03_Silver`](./MVP_Notebooks/03_Silver.ipynb), [`04_Gold`](./MVP_Notebooks/04_Gold.ipynb) e [`05_Analise`](./MVP_Notebooks/05_Analise.ipynb).
+4. Consulte o [`06_Autoavaliacao`](./MVP_Notebooks/06_Autoavaliacao.ipynb), também documental.
 
 O código utiliza o catálogo `main` e cria os esquemas `bronze`, `silver` e `gold`. A conta utilizada precisa permitir a criação de esquemas e tabelas nesse catálogo; caso contrário, os nomes qualificados devem ser adaptados no código. A ingestão depende de acesso às URLs públicas dos CSVs neste repositório. As tabelas são persistidas em Delta Lake, de modo que os notebooks seguintes leem as tabelas gravadas, sem depender de variáveis mantidas em memória entre execuções.
 
@@ -162,7 +162,7 @@ Os notebooks versionados incluem resultados de execução quando disponíveis. O
 
 ## 8. Autoavaliação e limitações
 
-A [`autoavaliação`](./MVP%20Notebooks/06_Autoavaliacao.ipynb) registra os desafios encontrados na ingestão, na normalização dos esquemas e na integração de múltiplas fontes, além dos aprendizados com a arquitetura Medalhão e o modelo dimensional.
+A [`autoavaliação`](./MVP_Notebooks/06_Autoavaliacao.ipynb) registra os desafios encontrados na ingestão, na normalização dos esquemas e na integração de múltiplas fontes, além dos aprendizados com a arquitetura Medalhão e o modelo dimensional.
 
 As principais limitações analíticas são a natureza observacional da base, a ausência de área territorial para calcular densidade populacional, a concentração geográfica na Califórnia e o fato de algumas perguntas originais terem sido respondidas parcialmente. Essas limitações são mantidas de forma explícita para distinguir o objetivo inicialmente proposto das análises efetivamente implementadas.
 
@@ -173,4 +173,3 @@ As principais limitações analíticas são a natureza observacional da base, a 
 - [Apache Spark — documentação oficial](https://spark.apache.org/docs/latest/) — referência para PySpark e Spark SQL.
 - [Delta Lake — documentação oficial](https://docs.delta.io/) — referência para o formato de armazenamento.
 - **IBM — Telco Customer Churn e bases complementares:** conjuntos de dados atribuídos à IBM e empregados para fins educacionais. Os três arquivos utilizados estão disponíveis na seção [Fontes de dados](#2-fontes-de-dados). A licença específica de redistribuição e uso comercial não foi verificada neste README.
-
