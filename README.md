@@ -144,6 +144,6 @@ Os notebooks versionados incluem resultados de execução quando disponíveis. O
 
 ## Autoavaliação
 
-Discussão sobre desafios técnicos, objetivos atingidos e próximos passos está em `06_Autoavaliacao.ipynb`.
+Discussão sobre desafios técnicos, objetivos atingidos e próximos passos está em `06_Autoavaliacao.ipynb`(./MVP_Notebooks/06_Autoavaliacao.ipynb).
 
 
