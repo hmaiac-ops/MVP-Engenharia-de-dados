@@ -134,7 +134,13 @@ O pipeline foi dividido em um notebook por etapa, seguindo a recomendação da d
 
 1. Crie uma conta no [Databricks Free Edition](https://www.databricks.com/try-databricks).
 2. Importe os 6 notebooks deste repositório para o seu workspace.
-3. Execute na ordem numérica, do `01_Objetivo` ao `06_Autoavaliacao`. Cada notebook depende das tabelas gravadas pelo anterior, então pular a ordem quebra a execução.
+3. Leia o [`01_Objetivo`](./MVP_Notebooks/01_Objetivo.ipynb), que é documental.
+4. Execute, nesta ordem, os notebooks [`02_Coleta_e_Bronze`](./MVP_Notebooks/02_Coleta_e_Bronze.ipynb), [`03_Silver`](./MVP_Notebooks/03_Silver.ipynb), [`04_Gold`](./MVP_Notebooks/04_Gold.ipynb) e [`05_Analise`](./MVP_Notebooks/05_Analise.ipynb).
+5. Consulte o [`06_Autoavaliacao`](./MVP_Notebooks/06_Autoavaliacao.ipynb), também documental.
+
+O código utiliza o catálogo `main` e cria os esquemas `bronze`, `silver` e `gold`. A conta utilizada precisa permitir a criação de esquemas e tabelas nesse catálogo; caso contrário, os nomes qualificados devem ser adaptados no código. A ingestão depende de acesso às URLs públicas dos CSVs neste repositório. As tabelas são persistidas em Delta Lake, de modo que os notebooks seguintes leem as tabelas gravadas, sem depender de variáveis mantidas em memória entre execuções.
+
+Os notebooks versionados incluem resultados de execução quando disponíveis. O GitHub permite visualizar essas saídas, mas não executa o código nem necessariamente reproduz recursos interativos do Databricks.
 
 ## Autoavaliação
 
