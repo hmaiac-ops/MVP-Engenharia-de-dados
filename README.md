@@ -18,7 +18,7 @@ Entender quais fatores de serviço, contrato e localização mais influenciam o 
 3. Serviços adicionais (suporte técnico, segurança online) reduzem o churn?
 4. Qual o método de pagamento preferido pelos clientes mais longevos e rentáveis?
 5. Existe concentração de churn ou de clientes de alto valor em cidades/faixas de população específicas?
-6. O faturamento médio varia conforme a densidade populacional da região do cliente?
+6. O faturamento médio varia conforme a faixa de população da região do cliente?
 
 ## Fontes de dados
 
@@ -115,7 +115,7 @@ Antes de modelar, verifiquei nulos, domínio de valores, faixa numérica e dupli
 - Suporte técnico está associado a menor churn.
 - Pagamento automático (cartão) está associado a mais tempo de casa e mais receita.
 - Por Estado não havia variação real (base 100% Califórnia). Troquei para análise por Cidade, filtrando só cidades com pelo menos 30 clientes pra evitar conclusão de amostra pequena.
-- Densidade populacional da região também se relaciona com o perfil de consumo e churn.
+- A faixa de população da região também se relaciona com o perfil de consumo e churn.
 
 ## Estrutura do projeto
 
